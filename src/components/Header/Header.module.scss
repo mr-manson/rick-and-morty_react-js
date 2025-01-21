@@ -1,0 +1,110 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 64px 0 16px;
+}
+
+.favorites_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 8px 6px 6px;
+  border-radius: 32px;
+  color: #F1F1F1;
+  background: #11B0C8;
+  transition: .5s;
+  cursor: pointer;
+
+  &_icon {
+    width: 21px;
+    height: 18px;
+    margin-right: 8px;
+    transition: .5s;
+  }
+
+
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+
+  text-align: left;
+}
+
+.hero_text {
+  width: 470px;
+  margin-top: 64px;
+}
+
+.hero_title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 24px;
+
+  & span {
+    color: #11B0C8;
+  }
+}
+
+.hero_content {
+  font-size: 16px;
+  margin-bottom: 64px;
+}
+
+.hero_themes {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 4px;
+}
+
+.themes_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 8px 4px 6px;
+  border-radius: 32px;
+  color: #F1F1F1;
+  background: #11B0C8;
+  transition: .5s;
+  cursor: pointer;
+
+  &.white {
+    color: black;
+    background: transparent;
+
+    & .theme_icon{
+      fill: black;
+    }
+
+  }
+}
+
+.theme_icon {
+  width: 24px;
+  height: 28px;
+  margin-right: 8px;
+  fill: #F1F1F1;
+}
+
+.hero_img {
+  height: 425px;
+  width: 435px;
+  overflow: hidden;
+}
+
+.wubba{
+  font-style: 16;
+  color: #11B0C8;
+}
+
+.line {
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100vw;
+  background: #11B0C8;
+}
