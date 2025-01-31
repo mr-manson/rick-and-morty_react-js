@@ -4,9 +4,9 @@ import Character from "./Character/Character";
 import { getApi } from '../../utils/api';
 import { BASE_URL, CHARACTER } from '../../constants/api';
 
-import styles from './CharactersPage.module.scss';
+import styles from './Characters.module.scss';
 
-const CharactersPage = () => {
+const Characters = () => {
     const [characters, setCharacters] = useState([]);
     const [errorApi, setErrorApi] = useState(false);
 
@@ -65,4 +65,4 @@ const CharactersPage = () => {
     );
 };
 
-export default CharactersPage;
+export default Characters;

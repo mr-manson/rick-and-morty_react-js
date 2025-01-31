@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './ErrorPage.module.scss';
+import styles from './Error404.module.scss';
 
-const ErrorPage = () => {
+const Error404 = () => {
     return (
         <>
             <div className={styles.background_img}>
@@ -21,4 +21,4 @@ const ErrorPage = () => {
     );
 };
 
-export default ErrorPage;
+export default Error404;
