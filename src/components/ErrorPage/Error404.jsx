@@ -1,10 +1,10 @@
-import React from 'react';
 import styles from './Error404.module.scss';
+import { Link } from "react-router-dom";
 
 const Error404 = () => {
     return (
         <>
-            <div className={styles.background_img}>
+            <div className={styles.container}>
                 <div className={styles.space}></div>
                 <div className={styles.wrapper}>
                     <div className={styles.img_wrapper}>
@@ -14,7 +14,7 @@ const Error404 = () => {
                         The page you are trying to search has been <br/>
                         moved to another universe.
                     </p>
-                    <button type={styles.button}>GET ME HOME</button>
+                    <Link className={styles.button} to="/">GET ME HOME</Link>
                 </div>
             </div>
         </>

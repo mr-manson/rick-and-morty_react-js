@@ -1,16 +1,12 @@
-* {
-  font-family: Ubuntu, sans-serif;
-}
-
-.background_img {
+.container {
   margin: 0;
   padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-color: #1e234d;
   height: 100%;
-}
-
-html {
-  height: 100%;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -39,7 +35,7 @@ html {
     height: max-content;
     &:before {
       content: "";
-      background-image: url("https://staticdelivery.nexusmods.com/mods/1151/images/528-0-1447526230.png");
+      background-image: url("./img/404.webp");
       position: absolute;
       height: 100%;
       width: 100%;
@@ -51,20 +47,19 @@ html {
   }
   p {
     text-align: center;
-    font-style: italic;
     font-weight: 400;
     color: #fff;
-    margin-top: 0;
+    margin: 0 0 25px;
     line-height: 22px;
   }
 
-  button {
-    background-color: #f96e4d;
+  .button {
+    background-color: #11B0C8;
     border: 0;
     padding: 11px 22px;
     border-radius: 50px;
     color: #fff;
-    margin-top: 10px;
+
     cursor: pointer;
     font-weight: 900;
   }
@@ -92,7 +87,7 @@ html {
 }
 
 .space {
-  position: absolute;
+  position: relative;
   width: 400vw;
   height: 400vh;
   top: 50%;

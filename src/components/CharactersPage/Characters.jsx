@@ -5,6 +5,7 @@ import { getApi } from '../../utils/api';
 import { BASE_URL, CHARACTER } from '../../constants/api';
 
 import styles from './Characters.module.scss';
+import Error404 from "../ErrorPage";
 
 const Characters = () => {
     const [characters, setCharacters] = useState([]);
@@ -41,7 +42,8 @@ const Characters = () => {
             {errorApi
                 ? (
                     <div className={styles.container}>
-                        <h2 style={{color: 'black'}}>ERROR</h2>
+                        {/*<h2 style={{color: 'black'}}>ERROR</h2>*/}
+                        <Error404 />
                     </div>
                 )
                 : (
