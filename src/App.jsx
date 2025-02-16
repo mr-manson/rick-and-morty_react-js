@@ -8,17 +8,15 @@ import Navigation from "./components/Navigation";
 
 import styles from './App.module.scss';
 
-
-
 function App() {
     return (
         <div className={styles.container}>
             <Navigation />
             <Routes>
-                <Route path="/" exact element={<Home/>}/>
-                <Route path="/characters" exact element={<Characters/>}/>
-                <Route path="/locations" exact element={<Locations/>}/>
-                <Route path="/error" exact element={<Error404/>}/>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/characters" element={<Characters/>}/>
+                <Route path="/locations" element={<Locations/>}/>
+                <Route path="/error" element={<Error404/>}/>
             </Routes>
         </div>
     );
