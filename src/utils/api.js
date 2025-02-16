@@ -1,3 +1,15 @@
+// import axios from "axios";
+//
+// export const getApi = async (url) => {
+//     try {
+//         return await axios(url, "GET");
+//     } catch (error) {
+//         console.error(error.message);
+//         return false
+//     }
+// }
+
+
 export const getApi = async (url) => {
     try {
         const res = await fetch(url);
