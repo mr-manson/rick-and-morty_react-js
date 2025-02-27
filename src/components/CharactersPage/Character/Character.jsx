@@ -3,6 +3,7 @@ import styles from "./Character.module.scss";
 import sprite from "./img/sprite.svg";
 
 const Character = ({id, name, image, status, species, origin}) => { // FIXME сделать компонент Button
+
     return (
         <div>
             <li key={id} className={styles.list_item}>
@@ -36,7 +37,7 @@ const Character = ({id, name, image, status, species, origin}) => { // FIXME с�
                             </svg>
                         </div>
                     </div>
-                    <div className={styles.more_button}>
+                    <div onClick={() => console.log(species) } className={styles.more_button}>
                         <svg className={styles.more_button_icon}>
                         <use href={sprite + "#info"}></use>
                         </svg>

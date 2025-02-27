@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+
 import { getApi } from "../../utils/api";
-import withErrorApi from "../../hoc/withErrorApi";
 import { BASE_URL, LOCATION } from "../../constants/api";
 
 import styles from "./Locations.module.scss";
 
-const Locations = ({setErrorApi}) => {
-
+const Locations = () => {
     const [locations, setLocations] = useState([]);
+    const navigate = useNavigate();
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const getLocations = async (url) => {
         const res = await getApi(url);
 
@@ -24,15 +24,14 @@ const Locations = ({setErrorApi}) => {
                 }
             })
             setLocations(locList);
-            setErrorApi(false);
         } else {
-            setErrorApi(true);
+            navigate("/error");
         }
     };
 
     useEffect(() => {
         getLocations(BASE_URL + LOCATION);
-    }, [getLocations]);
+    }, []);
 
     return (
         <div className={styles.container}>
@@ -47,4 +46,4 @@ const Locations = ({setErrorApi}) => {
     );
 };
 
-export default withErrorApi(Locations);
+export default Locations;

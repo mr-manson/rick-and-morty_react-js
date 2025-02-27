@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import Character from "./Character/Character";
-import withErrorApi from "../../hoc/withErrorApi";
 
 import { getApi } from "../../utils/api";
 import { BASE_URL, CHARACTER } from "../../constants/api";
 
 import styles from "./Characters.module.scss";
 
-const Characters = ({setErrorApi}) => {
+const Characters = () => {
     const [characters, setCharacters] = useState([]);
+    const navigate = useNavigate();
 
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const getCharacters = async (url) => {
         const res = await getApi(url);
+
+        // console.log(res.info.next);
 
         if (res) {
             const charList = res.results.map(
@@ -29,15 +30,14 @@ const Characters = ({setErrorApi}) => {
                 }
             );
             setCharacters(charList);
-            setErrorApi(false);
         } else {
-            setErrorApi(true);
+            navigate('/error');
         }
     };
 
     useEffect(() => {
         getCharacters(BASE_URL + CHARACTER);
-    }, [getCharacters]);
+    }, []);
 
     return (
         <>
@@ -59,4 +59,4 @@ const Characters = ({setErrorApi}) => {
     );
 };
 
-export default withErrorApi(Characters);
+export default Characters;
