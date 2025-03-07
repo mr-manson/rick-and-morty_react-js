@@ -1,8 +1,14 @@
 //import React from "react";
 import styles from "./Character.module.scss";
 import sprite from "./img/sprite.svg";
+// import { useState } from "react";
 
-const Character = ({id, name, image, status, species, origin}) => { // FIXME сделать компонент Button
+const Character = ({id, name, image, status, species, origin, setItemId, setActive}) => { // FIXME сделать компонент Button
+
+    const setItemData = (id) => {
+        setItemId(id);
+        setActive(true);
+    }
 
     return (
         <div>
@@ -37,9 +43,9 @@ const Character = ({id, name, image, status, species, origin}) => { // FIXME с�
                             </svg>
                         </div>
                     </div>
-                    <div onClick={() => console.log(species) } className={styles.more_button}>
+                    <div className={styles.more_button} onClick={() => setItemData(id)}>
                         <svg className={styles.more_button_icon}>
-                        <use href={sprite + "#info"}></use>
+                            <use href={sprite + "#info"}></use>
                         </svg>
                         <span>Learn more</span>
                     </div>
