@@ -36,8 +36,8 @@ const Locations = () => {
     return (
         <div className={styles.container}>
             {
-                locations.filter(loc => loc.id <= 3).map(({name}) => (
-                    <div>
+                locations.filter(loc => loc.id <= 3).map(({id, name}) => (
+                    <div key={id}>
                         {name}
                     </div>
                 ))

@@ -1,21 +1,33 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 
 import Character from "../Character/Character";
 import Modal from "../../Modal";
 import CharacterInfo from "../CharacterInfo";
 
-import { getApi } from "../../../utils/api";
-import { BASE_URL, CHARACTER } from "../../../constants/api";
+import { getApi, getPageId } from "../../../utils/api";
+import { BASE_URL, CHARACTER, PAGE } from "../../../constants/api";
 
 import styles from "./Characters.module.scss";
+import Pagination from "../../Pagination";
 
 const Characters = () => {
     const [characters, setCharacters] = useState([]);
+
+    const [currentPage, setCurrentPage] = useState(null);
+    const [prevPage, setPrevPage] = useState(null);
+    const [nextPage, setNextPage] = useState(null);
     const [itemId, setItemId] = useState(null);
     const [active, setActive] = useState(false);
 
+    const [searchParams] = useSearchParams(); // NOTE Получение параметра URL
+    const paramPage = searchParams.get("page");
+
     const navigate = useNavigate();
+
+    // console.log(currentPage);
+    // console.log(nextPage);
+    // console.log(prevPage);
 
     const getCharacters = async (url) => {
         const res = await getApi(url);
@@ -34,20 +46,27 @@ const Characters = () => {
                 }
             );
             setCharacters(charList);
+            setPrevPage(res.info.prev);
+            setNextPage(res.info.next);
+            setCurrentPage(getPageId(url, PAGE));
         } else {
             navigate('/error');
         }
     };
 
     useEffect(() => {
-        getCharacters(BASE_URL + CHARACTER);
-    }, []);
-
-    // console.log(itemId, active);
+        getCharacters(BASE_URL + CHARACTER + PAGE + paramPage);
+    }, [paramPage]);
 
     return (
         <>
             <div className={styles.container}>
+                <Pagination
+                    getCharacters={getCharacters}
+                    currentPage={currentPage}
+                    prevPage={prevPage}
+                    nextPage={nextPage}
+                />
                 <ul className={styles.list}>
                     {characters.map(({id, name, image, status, species, origin}) => (
                         <Character
@@ -64,8 +83,8 @@ const Characters = () => {
                     ))}
                 </ul>
             </div>
-            <Modal itemId={itemId} active={active} setActive={setActive} >
-                <CharacterInfo itemId={itemId} />
+            <Modal itemId={itemId} active={active} setActive={setActive}>
+                <CharacterInfo itemId={itemId}/>
             </Modal>
         </>
     );

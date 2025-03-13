@@ -20,11 +20,12 @@
 
 .modal_content {
   position: relative;
+  display: flex;
   width: 750px;
   height: 450px;
   background-color: white;
   margin: 0 auto;
-  padding: 10px;
+  padding: 30px;
   border: 2px solid #11B0C8;
   border-radius: 10px;
   box-shadow: 0 0 15px 0 rgba(17, 176, 200, 0.5);

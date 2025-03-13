@@ -1,14 +1,3 @@
-// import axios from "axios";
-//
-// export const getApi = async (url) => {
-//     try {
-//         return await axios(url, "GET");
-//     } catch (error) {
-//         console.error(error.message);
-//         return false
-//     }
-// }
-
 
 export const getApi = async (url) => {
     try {
@@ -23,11 +12,7 @@ export const getApi = async (url) => {
     }
 }
 
-/*
-    const url = 'https://rickandmortyapi.com/api/character';
-
-    (async () => {
-        const body = await getApi(url);
-        console.log(body);
-    })();
-*/
+export const getPageId = (url, param) => {
+    const pos = url.lastIndexOf(param);
+    return Number(url.slice(pos + param.length, url.length));
+}
