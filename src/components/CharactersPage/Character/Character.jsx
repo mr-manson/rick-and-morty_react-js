@@ -1,7 +1,6 @@
 //import React from "react";
 import styles from "./Character.module.scss";
 import sprite from "./img/sprite.svg";
-// import { useState } from "react";
 
 const Character = ({id, name, image, status, species, origin, setItemId, setActive}) => { // FIXME сделать компонент Button
 

@@ -25,7 +25,7 @@ const Characters = () => {
 
     const navigate = useNavigate();
 
-    // console.log(currentPage);
+    // console.log(characters.length);
     // console.log(nextPage);
     // console.log(prevPage);
 

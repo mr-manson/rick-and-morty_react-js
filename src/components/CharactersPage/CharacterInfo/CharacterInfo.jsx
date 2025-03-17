@@ -9,7 +9,6 @@ const CharacterInfo = ({itemId}) => {
     const getCharacters = async (url) => {
         const res = await getApi(url);
 
-        console.log(res);
         if (res) {
             const charInfo = {
                 id: res.id,
@@ -28,7 +27,6 @@ const CharacterInfo = ({itemId}) => {
     };
 
     useEffect(() => {
-        // console.log(`ID: ${itemId}`);
         itemId && getCharacters(BASE_URL + CHARACTER + `/${itemId}/`);
     }, [itemId]);
 
