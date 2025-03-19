@@ -22,6 +22,7 @@
 
   &:disabled {
     color: #c3c3c3;
+    cursor: default;
   }
 }
 
@@ -39,8 +40,8 @@
   width: 30px;
   border-radius: 50%;
   border: 1px solid black;
-  text-align: center;
-  vertical-align: middle;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .active .number {
@@ -48,4 +49,12 @@
   border: 1px solid  #11B0C8;
   border-radius: 50%;
   color: white;
+}
+
+.dots {
+  pointer-events: none;
+
+  .number {
+    border-color: transparent;
+  }
 }

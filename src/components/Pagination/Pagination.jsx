@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
+import { returnPaginationRange } from "./utils/paginationUtils";
+import cn from "classname";
 import styles from './Pagination.module.scss';
-import { Link, NavLink } from 'react-router-dom';
 
-const Pagination = ({getCharacters, prevPage, nextPage, currentPage}) => {
+const Pagination = ({getCharacters, prevPage, nextPage, totalPage, currentPage, siblings}) => {
     const nextPageHandler = () => {
         getCharacters(nextPage);
     }
@@ -9,23 +11,26 @@ const Pagination = ({getCharacters, prevPage, nextPage, currentPage}) => {
         getCharacters(prevPage);
     }
 
-    const pages = [1, 2, 3, 4, 5];
+    const pages = returnPaginationRange(totalPage, currentPage, siblings);
 
     return (
         <div className={styles.container}>
             <Link to={`/characters/?page=${currentPage - 1}`} className={`${styles.link} ${styles.arrow}`}>
                 <button className={styles.link_btn}
-                    onClick={prevPageHandler}
-                    disabled={!prevPage}
+                        onClick={prevPageHandler}
+                        disabled={!prevPage}
                 >&lsaquo;</button>
             </Link>
 
             <div className={styles.pages}>
-                {pages.map((page) => (
+                {pages.map((page, index) => (
                     <Link
                         to={`/characters/?page=${currentPage + (page - currentPage)}`}
-                        key={page}
-                        className={(currentPage !== page) ? styles.link : `${styles.link} ${styles.active}`}
+                        key={index}
+                        className={cn(
+                            (currentPage !== page) ? styles.link : `${styles.link} ${styles.active}`,
+                            (page === "...") ? styles.dots : ""
+                        )}
                     >
                         <span className={styles.number}>{page}</span>
                     </Link>
@@ -34,8 +39,8 @@ const Pagination = ({getCharacters, prevPage, nextPage, currentPage}) => {
 
             <Link to={`/characters/?page=${currentPage + 1}`} className={`${styles.link} ${styles.arrow}`}>
                 <button className={styles.link_btn}
-                    onClick={nextPageHandler}
-                    disabled={!nextPage}
+                        onClick={nextPageHandler}
+                        disabled={!nextPage}
                 >&rsaquo;</button>
             </Link>
         </div>

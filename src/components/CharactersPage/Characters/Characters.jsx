@@ -14,7 +14,9 @@ import Pagination from "../../Pagination";
 const Characters = () => {
     const [characters, setCharacters] = useState([]);
 
+    const [totalPage, setTotalPage] = useState(null);
     const [currentPage, setCurrentPage] = useState(null);
+    const [siblings] = useState(2);
     const [prevPage, setPrevPage] = useState(null);
     const [nextPage, setNextPage] = useState(null);
     const [itemId, setItemId] = useState(null);
@@ -49,6 +51,7 @@ const Characters = () => {
             setPrevPage(res.info.prev);
             setNextPage(res.info.next);
             setCurrentPage(getPageId(url, PAGE));
+            setTotalPage(res.info.pages);
         } else {
             navigate('/error');
         }
@@ -63,9 +66,11 @@ const Characters = () => {
             <div className={styles.container}>
                 <Pagination
                     getCharacters={getCharacters}
+                    totalPage={totalPage}
                     currentPage={currentPage}
                     prevPage={prevPage}
                     nextPage={nextPage}
+                    siblings={siblings}
                 />
                 <ul className={styles.list}>
                     {characters.map(({id, name, image, status, species, origin}) => (
