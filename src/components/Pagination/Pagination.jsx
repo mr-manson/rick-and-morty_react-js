@@ -28,8 +28,8 @@ const Pagination = ({getCharacters, prevPage, nextPage, totalPage, currentPage, 
                         to={`/characters/?page=${currentPage + (page - currentPage)}`}
                         key={index}
                         className={cn(
-                            (currentPage !== page) ? styles.link : `${styles.link} ${styles.active}`,
-                            (page === "...") ? styles.dots : ""
+                            currentPage !== page ? styles.link : `${styles.link} ${styles.active}`,
+                            page === "..." ? styles.dots : ""
                         )}
                     >
                         <span className={styles.number}>{page}</span>

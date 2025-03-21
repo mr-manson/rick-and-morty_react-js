@@ -12,3 +12,31 @@
     text-decoration: underline;
   }
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 32px 0 16px;
+}
+
+.favorites_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 8px 6px 6px;
+  border-radius: 32px;
+  color: #F1F1F1;
+  background: #11B0C8;
+  transition: .5s;
+  cursor: pointer;
+
+  &_icon {
+    width: 21px;
+    height: 18px;
+    margin-right: 8px;
+    transition: .5s;
+  }
+
+
+}

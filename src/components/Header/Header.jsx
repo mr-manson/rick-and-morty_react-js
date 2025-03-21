@@ -1,21 +1,11 @@
 import styles from "./Header.module.scss";
 
 import sprite from "./img/sprite.svg";
-import logo from "./img/LogoA.png";
 import hero from "./img/HighLightImage.png";
 
 const Header = () => { // FIXME сделать компонент Button
     return (
         <div>
-            <div className={styles.header}>
-                <img src={logo} alt="Logo"/>
-                <div className={styles.favorites_button}>
-                    <svg className={styles.favorites_button_icon}>
-                        <use href={sprite + "#heart"}></use>
-                    </svg>
-                    <span>Favorites list</span>
-                </div>
-            </div>
             <div className={styles.hero}>
                 <div className={styles.hero_text}>
                     <h1 className={styles.hero_title}>Find out everything in one <span>place.</span></h1>
@@ -23,13 +13,13 @@ const Header = () => { // FIXME сделать компонент Button
                     <div className={styles.hero_themes}>
                         <div className={`${styles.themes_button} ${styles.white}`}>
                             <svg className={styles.theme_icon}>
-                                <use href={sprite + "#light"}></use>
+                                <use href={sprite + "#dark"}></use>
                             </svg>
                             <span>Dark</span>
                         </div>
                         <div className={styles.themes_button}>
                             <svg className={styles.theme_icon}>
-                                <use href={sprite + "#dark"}></use>
+                                <use href={sprite + "#light"}></use>
                             </svg>
                             <span>Light</span>
                         </div>

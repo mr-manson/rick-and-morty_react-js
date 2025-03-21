@@ -6,7 +6,7 @@ import Locations from "./components/LocationsPage";
 import Error404 from "./components/ErrorPage";
 import Navigation from "./components/Navigation";
 
-import styles from './App.module.scss';
+import styles from "./App.module.scss";
 
 function App() {
     return (
