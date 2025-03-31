@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigate{
+  padding: 10px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.window {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 750px;
+  padding: 20px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-width: 100%;
+  font-size: 30px;
+  transition: all .2s linear;
+  opacity: 0;
+
+  &:nth-child(1){
+    background-color: #f17272;
+  }
+
+  &:nth-child(2){
+    background-color: #64f4a3;
+  }
+
+  &:nth-child(3){
+    background-color: #3194d5;
+  }
+}
+
+.nextSlide {
+  transform: translateX(100%);
+}
+
+.activeSlide{
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.prevSlide{
+  transform: translateX(-100%);
+}

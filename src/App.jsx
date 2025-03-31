@@ -7,6 +7,7 @@ import Error404 from "./components/ErrorPage";
 import Navigation from "./components/Navigation";
 
 import styles from "./App.module.scss";
+import Footer from "./components/Footer";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/locations" element={<Locations/>}/>
                 <Route path="/error" element={<Error404/>}/>
             </Routes>
+            <Footer />
         </div>
     );
 }
