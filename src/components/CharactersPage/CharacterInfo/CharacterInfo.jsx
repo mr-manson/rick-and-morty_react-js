@@ -2,9 +2,11 @@ import styles from "./CharactersInfo.module.scss";
 import { useEffect, useState } from "react";
 import { getApi } from "../../../utils/api";
 import { BASE_URL, CHARACTER } from "../../../constants/api";
+import CharacterFilms from "../CharacterFilms";
 
 const CharacterInfo = ({itemId}) => {
     const [charInfo, setCharInfo] = useState({});
+    const [charEpisodes, setCharEpisodes] = useState([]);
 
     const getCharacters = async (url) => {
         const res = await getApi(url);
@@ -22,6 +24,7 @@ const CharacterInfo = ({itemId}) => {
                 episode: res.episode,
             }
             setCharInfo(charInfo);
+            setCharEpisodes(charInfo.episode);
         }
 
     };
@@ -32,8 +35,11 @@ const CharacterInfo = ({itemId}) => {
 
     return (
         <div className={styles.container}>
-            <p>{charInfo.name}</p>
-            <img src={charInfo.image} alt={charInfo.name} />
+            <div>
+                <p>{charInfo.name}</p>
+                <img src={charInfo.image} alt={charInfo.name}/>
+            </div>
+            <CharacterFilms episodes={charEpisodes} />
         </div>
     );
 };

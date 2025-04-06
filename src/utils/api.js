@@ -16,3 +16,9 @@ export const getPageId = (url, param) => {
     const pos = url.lastIndexOf(param);
     return Number(url.slice(pos + param.length, url.length));
 }
+
+export const getConcurrentApi = async (url) => {
+    return await Promise.all(url.map(res => {
+        return fetch(res).then(res => res.json());
+    }));
+}
