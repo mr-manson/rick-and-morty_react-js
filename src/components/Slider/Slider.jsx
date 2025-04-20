@@ -53,7 +53,7 @@ const Slider = () => {
                     <div key={index}
                         className={index === currentIndex ? `${styles.dot} ${styles.active}` : styles.dot}
                         onClick={() => setCurrentIndex(index)}
-                    >&bull;</div>
+                    ></div>
                 )}
             </div>
 

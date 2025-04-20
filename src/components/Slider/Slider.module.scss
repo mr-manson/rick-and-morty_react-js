@@ -63,15 +63,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 40px;
   font-size: 40px;
   gap: 15px;
 }
 
 .dot {
+  height: 15px;
+  width: 15px;
+  background-color: #000;
+  border-radius: 7px;
   cursor: pointer;
   transition: all .5s ease-in-out;
 }
 
 .active {
-  color: #11B0C8;
+  width: 50px;
+  background-color: #11B0C8;
 }
