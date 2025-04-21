@@ -5,10 +5,13 @@ import { getApi } from "../../utils/api";
 import { BASE_URL, LOCATION } from "../../constants/api";
 
 import styles from "./Locations.module.scss";
+import { useSelector } from "react-redux";
 
 const Locations = () => {
     const [locations, setLocations] = useState([]);
     const navigate = useNavigate();
+
+    const name = useSelector(state => state.favorite.name);
 
     const getLocations = async (url) => {
         const res = await getApi(url);
@@ -42,6 +45,7 @@ const Locations = () => {
                     </div>
                 ))
             }
+            <div className={styles.name}>Name is: {name}</div>
         </div>
     );
 };
