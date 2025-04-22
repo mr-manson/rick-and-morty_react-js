@@ -12,9 +12,6 @@ const Locations = () => {
     const [locations, setLocations] = useState([]);
     const navigate = useNavigate();
 
-    const favId = useSelector(state => state.favorite.favList);
-    const dispatch = useDispatch();
-
     const getLocations = async (url) => {
         const res = await getApi(url);
 
@@ -47,10 +44,6 @@ const Locations = () => {
                     </div>
                 ))
             }
-            <div className={styles.name}>Name is: {favId}</div>
-            <button onClick={() => {
-                dispatch(addFavorite(1));
-            }}>Change name</button>
         </div>
     );
 };
