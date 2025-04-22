@@ -5,13 +5,15 @@ import { getApi } from "../../utils/api";
 import { BASE_URL, LOCATION } from "../../constants/api";
 
 import styles from "./Locations.module.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite } from "../../store/slices/favoritesSlice";
 
 const Locations = () => {
     const [locations, setLocations] = useState([]);
     const navigate = useNavigate();
 
-    const name = useSelector(state => state.favorite.name);
+    const favId = useSelector(state => state.favorite.favList);
+    const dispatch = useDispatch();
 
     const getLocations = async (url) => {
         const res = await getApi(url);
@@ -45,7 +47,10 @@ const Locations = () => {
                     </div>
                 ))
             }
-            <div className={styles.name}>Name is: {name}</div>
+            <div className={styles.name}>Name is: {favId}</div>
+            <button onClick={() => {
+                dispatch(addFavorite(1));
+            }}>Change name</button>
         </div>
     );
 };

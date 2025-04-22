@@ -1,6 +1,8 @@
 //import React from "react";
 import styles from "./Character.module.scss";
 import sprite from "./img/sprite.svg";
+import { addFavorite } from "../../../store/slices/favoritesSlice";
+import { useDispatch } from "react-redux";
 
 const Character = ({id, name, image, status, species, origin, setItemId, setActive}) => { // FIXME сделать компонент Button
 
@@ -8,6 +10,8 @@ const Character = ({id, name, image, status, species, origin, setItemId, setActi
         setItemId(id);
         setActive(true);
     }
+
+    const dispatch = useDispatch();
 
     return (
         <div>
@@ -36,7 +40,11 @@ const Character = ({id, name, image, status, species, origin, setItemId, setActi
                                 <div className={styles.info_item_text}>{origin}</div>
                             </div>
                         </div>
-                        <div className={styles.fav_button}>
+                        <div className={styles.fav_button}
+                             onClick={() => {
+                                 dispatch(addFavorite(id));
+                             }}
+                        >
                             <svg className={styles.add_fav}>
                                 <use href={sprite + "#heart_stroke"}></use>
                             </svg>

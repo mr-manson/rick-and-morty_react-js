@@ -10,6 +10,7 @@ import { BASE_URL, CHARACTER, PAGE } from "../../../constants/api";
 
 import styles from "./Characters.module.scss";
 import Pagination from "../../Pagination";
+import { useSelector } from "react-redux";
 
 const Characters = () => {
     const [characters, setCharacters] = useState([]);
@@ -26,10 +27,6 @@ const Characters = () => {
     const paramPage = searchParams.get("page");
 
     const navigate = useNavigate();
-
-    // console.log(characters.length);
-    // console.log(nextPage);
-    // console.log(prevPage);
 
     const getCharacters = async (url) => {
         const res = await getApi(url);
