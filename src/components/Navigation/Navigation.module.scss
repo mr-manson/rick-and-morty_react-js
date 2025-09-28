@@ -1,4 +1,4 @@
-.container {
+.nav {
   display: flex;
   gap: 15px;
 }
@@ -6,11 +6,6 @@
 :global(.active) {
   color: red;
   font-weight: 800;
-  text-decoration: underline;
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 .header {
@@ -18,6 +13,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 32px 0 16px;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
 }
 
 .favorites_button {
@@ -37,6 +39,21 @@
     margin-right: 8px;
     transition: .5s;
   }
+}
 
+.favCount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -20px;
+  height: 25px;
+  width: 25px;
+  background-color: #F1F1F1;
+  border: 2px solid #11B0C8;
+  border-radius: 50%;
+  z-index: 5;
 
+  &_number{
+    color: #11B0C8;
+  }
 }

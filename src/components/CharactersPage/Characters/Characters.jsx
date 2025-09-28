@@ -1,20 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 
-import Character from "../Character/Character";
 import Modal from "../../Modal";
 import CharacterInfo from "../CharacterInfo";
+import Pagination from "../../Pagination";
 
 import { getApi, getPageId } from "../../../utils/api";
 import { BASE_URL, CHARACTER, PAGE } from "../../../constants/api";
 
 import styles from "./Characters.module.scss";
-import Pagination from "../../Pagination";
-import { useSelector } from "react-redux";
+import CharactersList from "../CharactersList";
 
 const Characters = () => {
     const [characters, setCharacters] = useState([]);
-
     const [totalPage, setTotalPage] = useState(null);
     const [currentPage, setCurrentPage] = useState(null);
     const [siblings] = useState(2);
@@ -69,21 +67,12 @@ const Characters = () => {
                     nextPage={nextPage}
                     siblings={siblings}
                 />
-                <ul className={styles.list}>
-                    {characters.map(({id, name, image, status, species, origin}) => (
-                        <Character
-                            key={id}
-                            id={id}
-                            name={name}
-                            image={image}
-                            status={status}
-                            species={species}
-                            origin={origin}
-                            setItemId={setItemId}
-                            setActive={setActive}
-                        />
-                    ))}
-                </ul>
+
+                <CharactersList
+                    characters={characters}
+                    setItemId={setItemId}
+                    setActive={setActive}
+                />
             </div>
             <Modal itemId={itemId} active={active} setActive={setActive}>
                 <CharacterInfo itemId={itemId}/>

@@ -12,16 +12,18 @@ import Favorites from "./components/Favorites";
 
 function App() {
     return (
-        <div className={styles.container}>
-            <Navigation />
-            <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/characters" element={<Characters/>}/>
-                <Route path="/locations" element={<Locations/>}/>
-                <Route path="/favorites" element={<Favorites/>}/>
-                <Route path="/error" element={<Error404/>}/>
-            </Routes>
-            <Footer />
+        <div className={styles.wrapper}>
+            <div className={styles.container}>
+                <Navigation/>
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/characters" element={<Characters/>}/>
+                    <Route path="/locations" element={<Locations/>}/>
+                    <Route path="/favorites" element={<Favorites/>}/>
+                    <Route path="/error" element={<Error404/>}/>
+                </Routes>
+                <Footer/>
+            </div>
         </div>
     );
 }

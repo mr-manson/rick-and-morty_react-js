@@ -1,3 +1,46 @@
 .container {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
 
+.hero_text {
+  width: 470px;
+  margin-top: 64px;
+}
+
+.fav {
+  height: 48px;
+  width: 48px;
+  cursor: pointer;
+  fill: #11B0C8;
+}
+
+.hero_title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 24px;
+
+  & span {
+    color: #11B0C8;
+  }
+}
+
+.reset_button{
+  color: #11B0C8;
+  cursor: pointer;
+}
+
+.hero_img {
+  height: 425px;
+  width: 435px;
+  overflow: hidden;
+}
+
+.line {
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #11B0C8;
 }

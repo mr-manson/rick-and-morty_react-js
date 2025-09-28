@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import _ from "lodash";
+import { reject } from "lodash";
+import { getLocalStorage } from "../../utils/localStorage";
 
 const initialState = {
-    favList: [],
+    // favList: [],
+    favList: getLocalStorage("fav").favList,
 }
 
 export const favoriteSlice = createSlice({
@@ -12,13 +14,15 @@ export const favoriteSlice = createSlice({
         addFavorite: (state, action) => {
             state.favList.push(action.payload);
         },
-
         removeFavorite: (state, action) => {
-            state.favList = _.without(state.favList, action.payload);
+            state.favList = reject(state.favList, item => item.id === action.payload);
+        },
+        clearFavorites: (state, action) => {
+            state.favList = [];
         }
     }
 })
 
-export const { addFavorite, removeFavorite } = favoriteSlice.actions;
+export const {addFavorite, removeFavorite, clearFavorites} = favoriteSlice.actions;
 
 export default favoriteSlice.reducer;

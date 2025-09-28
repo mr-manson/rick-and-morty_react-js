@@ -1,9 +1,8 @@
-//import React from "react";
 import styles from "./Character.module.scss";
 import sprite from "./img/sprite.svg";
 import { addFavorite, removeFavorite } from "../../../store/slices/favoritesSlice";
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 const Character = ({id, name, image, status, species, origin, setItemId, setActive}) => { // FIXME сделать компонент Button
 
@@ -13,7 +12,30 @@ const Character = ({id, name, image, status, species, origin, setItemId, setActi
     }
 
     const dispatch = useDispatch();
-    const [isFavorite, setIsFavorite] = useState(false); // FIXME соединить с глобальным стейтом убрать стр.48
+    const [isFavorite, setIsFavorite] = useState(false);
+    const favList = useSelector(state => state.favorite.favList);
+
+    useEffect(() => {
+        !favList.some(fav => fav.id === id) ? setIsFavorite(false) : setIsFavorite(true)
+    }, [favList, id])
+
+    const toggleFavorite = () => {
+        if (isFavorite) {
+            dispatch(removeFavorite(id));
+            setIsFavorite(false);
+        } else {
+            // dispatch(addFavorite(id));
+            dispatch(addFavorite({
+                id,
+                name,
+                image,
+                status,
+                species,
+                origin,
+            }));
+            setIsFavorite(true);
+        }
+    }
 
     return (
         <div>
@@ -43,20 +65,12 @@ const Character = ({id, name, image, status, species, origin, setItemId, setActi
                             </div>
                         </div>
                         <div className={styles.fav_button}
-                             onClick={() => {
-                                 dispatch(addFavorite(id));
-                                 setIsFavorite(true);
-                             }}
+                             onClick={toggleFavorite}
                         >
                             <svg className={styles.add_fav}>
                                 <use href={`${sprite}${isFavorite ? "#heart_fill" : "#heart_stroke"}`}></use>
                             </svg>
                         </div>
-                        <div className={styles.fav_button}
-                             onClick={() => {
-                                 dispatch(removeFavorite(id));
-                             }}
-                        >REM</div>
                     </div>
                     <div className={styles.more_button} onClick={() => setItemData(id)}>
                         <svg className={styles.more_button_icon}>

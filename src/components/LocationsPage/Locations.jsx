@@ -5,8 +5,6 @@ import { getApi } from "../../utils/api";
 import { BASE_URL, LOCATION } from "../../constants/api";
 
 import styles from "./Locations.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { addFavorite } from "../../store/slices/favoritesSlice";
 
 const Locations = () => {
     const [locations, setLocations] = useState([]);
